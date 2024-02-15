@@ -1,0 +1,72 @@
+{
+  "name": "codator",
+  "displayName": "codator",
+  "description": "to assist with coding and designing code by using gpt and, if possible, run code on your code, to lets say replace stuff in the way you like.",
+  "version": "0.0.1",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/k-gintaras/codatorn"
+  },
+  "engines": {
+    "vscode": "^1.86.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "configuration": {
+      "title": "GPT Extension Settings",
+      "properties": {
+        "gptExtension.gptKey": {
+          "type": "string",
+          "default": "",
+          "description": "Enter your GPT API Key here."
+        }
+      }
+    },
+    "commands": [
+      {
+        "command": "codator.getGptCode",
+        "title": "Get Fast Gpt Response"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "codator.getGptCode",
+        "key": "ctrl+alt+q",
+        "when": "editorTextFocus"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "webpack --mode production",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src --ext ts",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/mocha": "^10.0.6",
+    "@types/node": "18.x",
+    "@types/vscode": "^1.86.0",
+    "@typescript-eslint/eslint-plugin": "^6.19.1",
+    "@typescript-eslint/parser": "^6.19.1",
+    "@vscode/test-cli": "^0.0.4",
+    "@vscode/test-electron": "^2.3.9",
+    "eslint": "^8.56.0",
+    "ts-loader": "^9.5.1",
+    "typescript": "^5.3.3",
+    "webpack": "^5.90.1",
+    "webpack-cli": "^5.1.4"
+  },
+  "dependencies": {
+    "axios": "^1.6.7",
+    "dotenv": "^16.4.3",
+    "openai": "^4.28.0",
+    "prettier": "^3.2.5",
+    "rxjs": "^7.8.1"
+  }
+}
