@@ -44,7 +44,6 @@ async function communicateWithGptAndInsertResponse(editor: vscode.TextEditor, te
 }
 
 function getGptKey(): string {
-  // Explicitly specify the section of the configuration to access
   const config = vscode.workspace.getConfiguration('gptExtension');
   const gptKey = config.get<string>('gptKey', '');
   if (!gptKey) {

@@ -64,13 +64,36 @@ class GptService {
       if (textContents.length === 0) {
         throw new Error("No text content found in the assistant's response.");
       }
-      let responseText = textContents.map((content) => '// ' + content.text.value).join('\n');
+      let responseText = textContents.map((content) => content.text.value).join('\n');
+
+      responseText = this.formatGptResponse2(responseText);
 
       return responseText;
     } catch (error) {
       console.error('Failed to get GPT code:', error);
       throw new Error('Error communicating with GPT API');
     }
+  }
+
+  formatGptResponse2(s: string): string {
+    let inCodeBlock = false; // A beacon to discern the realm we tread upon
+    let result = s
+      .split('\n')
+      .map((line) => {
+        // For each line, a decision to cloak or reveal
+        if (line.includes('```')) {
+          // The gates to the code realm appear
+          inCodeBlock = !inCodeBlock; // We toggle our presence within the realm
+          return '// ' + line; // Even the gates are whispered as secrets
+        } else if (inCodeBlock) {
+          return line; // Within the realm, the incantations are laid bare
+        } else {
+          return '// ' + line; // Outside, every utterance is a mere whisper
+        }
+      })
+      .join('\n');
+
+    return result; // The tapestry is complete, a blend of veiled prose and unveiled code
   }
 
   getTestResponse(msg: string): Promise<string> {
