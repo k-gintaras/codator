@@ -2,10 +2,10 @@
   "name": "codator",
   "displayName": "codator",
   "description": "to assist with coding and designing code by using gpt and, if possible, run code on your code, to lets say replace stuff in the way you like.",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "repository": {
     "type": "git",
-    "url": "https://github.com/k-gintaras/codatorn"
+    "url": "https://github.com/k-gintaras/codator"
   },
   "engines": {
     "vscode": "^1.86.0"
