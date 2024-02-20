@@ -29,13 +29,22 @@
     "commands": [
       {
         "command": "codator.getGptCode",
-        "title": "Get Fast Gpt Response"
+        "title": "Get Fast Gpt Code"
+      },
+      {
+        "command": "codator.getGptAdvice",
+        "title": "Get Fast Gpt Advice"
       }
     ],
     "keybindings": [
       {
         "command": "codator.getGptCode",
         "key": "ctrl+alt+q",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "codator.getGptAdvice",
+        "key": "ctrl+alt+1",
         "when": "editorTextFocus"
       }
     ]

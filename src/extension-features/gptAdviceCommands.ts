@@ -1,8 +1,8 @@
 import * as vscode from 'vscode';
-import GptService from '../openai/gptApiRequest';
+import GptService from '../openai/gptApiAssistantRequest';
 import { getSelectedTextOrCurrentLine } from './textHelper';
 
-export async function handleGptCodeCommand() {
+export async function handleGptAdviceCommand() {
   const editor = vscode.window.activeTextEditor;
   if (!editor) {
     vscode.window.showInformationMessage('No editor is active');
@@ -29,7 +29,7 @@ async function communicateWithGptAndInsertResponse(editor: vscode.TextEditor, te
       try {
         const gptKey = getGptKey();
         const gptService = new GptService(gptKey);
-        const response = await gptService.getFastGptCode(text);
+        const response = await gptService.getFastGptAdvice(text);
         editor.edit((editBuilder) => {
           const position = editor.selection.end;
           editBuilder.insert(position.with(position.line + 1, 0), '\n\n' + response + '\n\n');
